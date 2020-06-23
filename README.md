@@ -18,6 +18,6 @@ screen.
 2. Github (www.github.com)
 3. Npm (https://www.npmjs.com/)
 4. Node Require Modules
-   a. Require (https://www.npmjs.com/package/require)
-   b. Cherio (https://github.com/cheeriojs/cheerio)
-   c. Kwnl (https://github.com/loadfive/Knwl.js/)
+   1. Require (https://www.npmjs.com/package/require)
+   2. Cherio (https://github.com/cheeriojs/cheerio)
+   3. Kwnl (https://github.com/loadfive/Knwl.js/)
