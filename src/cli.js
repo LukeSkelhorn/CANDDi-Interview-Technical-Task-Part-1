@@ -1,12 +1,14 @@
-import request from 'request';
 import requestPromise from 'request-promise';
 import cheerio from 'cheerio';
 import boxen from 'boxen';
-import knwl from 'knwl.js';
+import ora from 'ora';
+import Knwl from 'knwl.js';
 import chalk from 'chalk';
 import { program } from 'commander';
 
 let emailValue = '';
+const knwlInstance = new Knwl('english');
+// knwlInstance.register('dates', require('./default_plugins/dates'));
 
 program
   .version('0.0.1')
@@ -24,6 +26,20 @@ const validateEmail = (email) => {
   return re.test(email);
 };
 
+const getEmails = () => {
+  const emails = knwlInstance.get('emails');
+  console.log('emails', emails);
+};
+
+const getPhones = () => {
+  const phones = knwlInstance.get('phones');
+  console.log('phones', phones);
+};
+const getPlaces = () => {
+  const places = knwlInstance.get('places');
+  console.log('places', places);
+};
+
 const getWebsite = (domain) => {
   const options = {
     uri: `http://www.${domain}`,
@@ -31,9 +47,15 @@ const getWebsite = (domain) => {
       return cheerio.load(body);
     },
   };
+  const spinner = ora(`Loading ${chalk.magenta('Loading website')}`);
+  spinner.start();
   return requestPromise(options)
     .then(($) => {
-      console.log($.html());
+      spinner.succeed();
+      knwlInstance.init($.html());
+      getEmails(); // Works
+      getPhones(); // Doesn't Work
+      getPlaces(); // Doesn't Work
       return $;
     })
     .catch((err) => {
