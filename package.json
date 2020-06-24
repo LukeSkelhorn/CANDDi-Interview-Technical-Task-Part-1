@@ -1,8 +1,15 @@
 {
-  "name": "canddi-interview-technical-task-part-1",
+  "name": "@scratk/email-web-scrapper",
   "version": "0.0.1",
   "description": "Node.js console based web-scraper",
-  "main": "app.js",
+  "main": "src/index.js",
+  "bin": {
+    "@scratk/canddi-email-web-scrapper": "bin/email-web-scrapper",
+    "email-web-scrapper": "bin/email-web-scrapper"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -16,8 +23,18 @@
     "url": "https://github.com/LukeSkelhorn/CANDDi-Interview-Technical-Task-Part-1/issues"
   },
   "homepage": "https://github.com/LukeSkelhorn/CANDDi-Interview-Technical-Task-Part-1#readme",
+  "keywords": [
+    "cli",
+    "email-web-scrapper"
+  ],
   "dependencies": {
+    "boxen": "^4.2.0",
+    "chalk": "^4.1.0",
     "cheerio": "^1.0.0-rc.3",
-    "knwl.js": "^1.0.2"
+    "commander": "^5.1.0",
+    "esm": "^3.2.25",
+    "knwl.js": "^1.0.2",
+    "request": "^2.88.2",
+    "request-promise": "^4.2.5"
   }
 }
