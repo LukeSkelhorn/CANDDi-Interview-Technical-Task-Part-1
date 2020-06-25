@@ -7,9 +7,13 @@ import chalk from 'chalk';
 import { program } from 'commander';
 
 let emailValue = '';
+const finalDetails = {
+  emails: [],
+  phones: [],
+  places: [],
+};
 const knwlInstance = new Knwl('english');
-// knwlInstance.register('dates', require('./default_plugins/dates'));
-
+knwlInstance.register('iPhones', require('../bin/internationalPhones'));
 program
   .version('0.0.1')
   .arguments('<email>')
@@ -32,8 +36,8 @@ const getEmails = () => {
 };
 
 const getPhones = () => {
-  const phones = knwlInstance.get('phones');
-  console.log('phones', phones);
+  const phones = knwlInstance.get('iPhones');
+  console.log('iPhones', phones);
 };
 const getPlaces = () => {
   const places = knwlInstance.get('places');
@@ -54,7 +58,7 @@ const getWebsite = (domain) => {
       spinner.succeed();
       knwlInstance.init($.html());
       getEmails(); // Works
-      getPhones(); // Doesn't Work
+      getPhones(); // Works
       getPlaces(); // Doesn't Work
       return $;
     })
