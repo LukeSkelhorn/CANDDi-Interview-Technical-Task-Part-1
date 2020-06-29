@@ -19,20 +19,16 @@ function UKAddresses(knwl) {
             const mod = secondPart.split('<')[0];
             if (mod.length === 2 || mod.length === 3) {
               const postalCode = `${words[i]} ${mod}`;
-              console.log('postalCode', postalCode);
-              console.log(words[i - 1]);
-              console.log(words[i - 2]);
-              console.log(words[i - 3]);
-              console.log(words[i - 4]);
+              console.log(postalCode);
+              const addressObj = {
+                address: postalCode,
+                preview: knwl.tasks.preview(i),
+                found: i,
+              };
+              results.push(addressObj);
             }
           }
         }
-        const addressObj = {
-          address: `${words[i]} ${words[i + 1]}`,
-          preview: knwl.tasks.preview(i),
-          found: i,
-        };
-        // results.push(addressObj);
       }
     }
 

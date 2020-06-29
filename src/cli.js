@@ -10,7 +10,7 @@ let emailValue = '';
 const finalDetails = {
     emails: [],
     phones: [],
-    places: [],
+    addresses: [],
   },
   knwlInstance = new Knwl('english');
 knwlInstance.register('internationalPhones', require('./internationalPhones'));
@@ -35,7 +35,6 @@ const validateEmail = (email) => {
 const getEmails = () => {
   const emails = knwlInstance.get('emails');
   for (let index = 0; index < emails.length; index++) {
-    const element = emails[index];
     if (!finalDetails.emails.includes(emails[index].address)) {
       finalDetails.emails.push(emails[index].address);
     }
@@ -45,7 +44,6 @@ const getEmails = () => {
 const getPhones = () => {
   const phones = knwlInstance.get('internationalPhones');
   for (let index = 0; index < phones.length; index++) {
-    const element = phones[index];
     if (!finalDetails.phones.includes(phones[index].number)) {
       finalDetails.phones.push(phones[index].number);
     }
@@ -53,7 +51,12 @@ const getPhones = () => {
 };
 const getPlaces = () => {
   const addresses = knwlInstance.get('addresses');
-  console.log('addresses', addresses);
+  // console.log(addresses);
+  for (let index = 0; index < addresses.length; index++) {
+    if (!finalDetails.addresses.includes(addresses[index].address)) {
+      finalDetails.addresses.push(addresses[index].address);
+    }
+  }
 };
 
 const getWebsite = (domain) => {
@@ -69,8 +72,8 @@ const getWebsite = (domain) => {
     .then(($) => {
       spinner.succeed();
       knwlInstance.init($.html());
-      // getEmails(); // Works
-      // getPhones(); // Works
+      getEmails(); // Works
+      getPhones(); // Works
       getPlaces(); // Doesn't Work
       console.log(finalDetails);
       return $;
