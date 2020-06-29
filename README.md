@@ -21,3 +21,10 @@ screen.
    1. Require (https://www.npmjs.com/package/require)
    2. Cherio (https://github.com/cheeriojs/cheerio)
    3. Kwnl (https://github.com/loadfive/Knwl.js/)
+
+## How to use:
+
+1. Run `npm install`
+2. Run `npm link`
+3. Run `email-web-scrapper <email>`
+4. Get the Results

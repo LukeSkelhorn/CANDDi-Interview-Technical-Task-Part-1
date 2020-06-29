@@ -19,7 +19,6 @@ function UKAddresses(knwl) {
             const mod = secondPart.split('<')[0];
             if (mod.length === 2 || mod.length === 3) {
               const postalCode = `${words[i]} ${mod}`;
-              console.log(postalCode);
               const addressObj = {
                 address: postalCode,
                 preview: knwl.tasks.preview(i),
